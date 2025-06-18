@@ -5,8 +5,17 @@ import logging
 import os
 from datetime import datetime
 
-# Configurar log
-logging.basicConfig(filename="logs/login_log.txt", level=logging.INFO)
+# Garante que a pasta logs exista
+os.makedirs("logs", exist_ok=True)
+
+# Configura o log
+logging.basicConfig(
+    filename="logs/login_log.txt",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
+driver = None
 
 try:
     driver = webdriver.Chrome()
